@@ -3,7 +3,7 @@ import modifier from '../src/modifier';
 
 describe('modifier closure', () => {
   it('should treat command as primary key', () => {
-    let event = new KeyboardEvent('keydown', {'keyCode': 37});
+    let event = new KeyboardEvent('keydown', {'key': 'c', 'metaKey': true});
     expect(modifier(event).withPrimaryKey).toBeTruthy();
   });
 });
