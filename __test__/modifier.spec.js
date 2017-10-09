@@ -13,3 +13,16 @@ describe('modifier macOS', () => {
     expect(modifier(event).secondaryKey).toBeTruthy();
   });
 });
+
+describe('modifier Windows', () => {
+  it('should treat control as primary key', () => {
+    let event = new KeyboardEvent('keydown', {'key': 'c', 'controlKey': true});
+    expect(modifier(event).primaryKey).toBeTruthy();
+    expect(modifier(event).secondaryKey).toBeFalsey();
+  });
+  it('should treat alt as secondary key', () => {
+    let event = new KeyboardEvent('keydown', {'key': 'c', 'altKey': true});
+    expect(modifier(event).primaryKey).toBeFalsey();
+    expect(modifier(event).secondaryKey).toBeTruthy();
+  });
+});
