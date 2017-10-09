@@ -37,10 +37,12 @@ describe('modifier closure', () => {
   });
   it('should concat the rest of the arguments to the event handler', () => {
     function EventHandler() {
-      return arguments.length;
+      return arguments;
     }
     let event = new KeyboardEvent('keydown', {'key': 'c', 'metaKey': true});
     let args = [event, 1, 2, 3];
-    expect(Modifier(EventHandler)(...args)).toBe(args.length);
+    let result = Modifier(EventHandler)(...args);
+    expect(result.length).toBe(args.length);
+    expect([...result]).toEqual(args);
   });
 });
