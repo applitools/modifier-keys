@@ -1,5 +1,9 @@
-export default function Modifier() {
+export default function Modifier(handler) {
+  return (event, ...argv) => {
+    return handler(modifier(event), ...argv);
+  };
 }
 
-export function modifier() {
+export function modifier(event) {
+  return event;
 }
