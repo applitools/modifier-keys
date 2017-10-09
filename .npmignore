@@ -1,2 +1,7 @@
 src/
 __test__/
+yarn.lock
+.eslintrc.js
+.babelrc
+.travis.yml
+rollup.config.json
