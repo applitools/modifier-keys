@@ -2,6 +2,11 @@
 import Modifier, { modifier } from '../src/modifier';
 
 describe('modifier macOS', () => {
+  global.window = {
+    navigator: {
+      userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36"
+    }
+  };
   it('should treat command as primary key', () => {
     let event = new KeyboardEvent('keydown', {'key': 'c', 'metaKey': true});
     expect(modifier(event).primaryKey).toBeTruthy();
@@ -15,6 +20,11 @@ describe('modifier macOS', () => {
 });
 
 describe('modifier Windows', () => {
+  global.window = {
+    navigator: {
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36"
+    }
+  };
   it('should treat control as primary key', () => {
     let event = new KeyboardEvent('keydown', {'key': 'c', 'controlKey': true});
     expect(modifier(event).primaryKey).toBeTruthy();
@@ -28,6 +38,11 @@ describe('modifier Windows', () => {
 });
 
 describe('modifier closure', () => {
+  global.window = {
+    navigator: {
+      userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36"
+    }
+  };
   it('should add the primary key to the event handler', () => {
     function EventHandler(e) {
       return e;
