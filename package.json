@@ -2,8 +2,12 @@
   "name": "modifier-keys",
   "version": "0.0.0",
   "description": "A declarative library designed to handle modifier key states",
-  "main": "index.js",
+  "main": "dist/modifier-keys.cjs.js",
+  "module": "dist/modifier-keys.esm.js",
+  "browser": "dist/modifier-keys.umd.js",
   "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "test": "jest",
     "lint": "eslint src/"
   },
@@ -13,6 +17,7 @@
   "devDependencies": {
     "babel-eslint": "^8.0.1",
     "babel-jest": "^21.2.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "eslint": "^4.8.0",
     "eslint-plugin-jest": "^21.2.0",
@@ -24,5 +29,8 @@
   },
   "dependencies": {
     "ua-parser-js": "^0.7.14"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
