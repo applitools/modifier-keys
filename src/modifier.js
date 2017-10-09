@@ -1,5 +1,5 @@
 import parser from 'ua-parser-js';
-import useragent from './useragent';
+import getUserAgent from './useragent';
 
 const OS = {
   macOS: 0,
@@ -26,7 +26,7 @@ export default function Modifier(handler) {
 }
 
 export function modifier(event) {
-  const os = getOS(useragent);
+  const os = getOS(getUserAgent());
   event.primaryKey = ((os === OS.macOS && event.metaKey) || (os !== OS.macOS && event.ctrlKey));
   event.secondaryKey = event.altKey;
   return event;
