@@ -1,2 +1,5 @@
-export default function modifier() {
+export default function Modifier() {
+}
+
+export function modifier() {
 }
