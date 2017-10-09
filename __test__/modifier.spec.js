@@ -4,7 +4,6 @@ import getUserAgentMock from '../src/useragent';
 import Modifier, { modifier } from '../src/modifier';
 
 describe('modifier macOS', () => {
-  console.log(getUserAgentMock);
   it('should treat command as primary key', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
     let event = new KeyboardEvent('keydown', {'key': 'c', 'metaKey': true});
@@ -22,7 +21,7 @@ describe('modifier macOS', () => {
 describe('modifier Windows', () => {
   it('should treat control as primary key', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
-    let event = new KeyboardEvent('keydown', {'key': 'c', 'controlKey': true});
+    let event = new KeyboardEvent('keydown', {'key': 'c', 'ctrlKey': true});
     expect(modifier(event).primaryKey).toBeTruthy();
     expect(modifier(event).secondaryKey).toBeFalsy();
   });
