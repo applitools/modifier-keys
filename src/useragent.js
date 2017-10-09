@@ -1,1 +1,1 @@
-export default window.navigator.userAgent;
+export default () => window.navigator.userAgent;
