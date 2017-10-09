@@ -5,5 +5,13 @@
   "main": "index.js",
   "repository": "git@github.com:applitools/modifier-keys.git",
   "author": "Tomer <tomer@corevo.io>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "jest": "^21.2.1"
+  }
 }
