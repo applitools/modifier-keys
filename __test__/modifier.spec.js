@@ -64,13 +64,13 @@ describe('modifier closure', () => {
     expect(Modifier(handler)(event)).toBe(context);
   });
   it('should throw an error if no event was sent', () => {
-    expect(Modifier(new Function)()).toThrow();
+    expect(() => Modifier(new Function)()).toThrowError('Expected to receive KeyboardEvent instead received undefined');
   });
   it('should throw an error if other type was sent', () => {
-    expect(Modifier(new Function)(1)).toThrow();
+    expect(() => Modifier(new Function)(1)).toThrowError('Expected to receive KeyboardEvent instead received Number');
   });
   it('should throw an error if wrong type of event was sent', () => {
     let event = new MouseEvent('click');
-    expect(Modifier(new Function)(event)).toThrow();
+    expect(() => Modifier(new Function)(event)).toThrowError('Expected to receive KeyboardEvent instead received MouseEvent');
   });
 });
