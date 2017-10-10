@@ -1,4 +1,5 @@
-# Modifier Keys [![Build Status](https://travis-ci.org/applitools/modifier-keys.svg?branch=master)](https://travis-ci.org/applitools/modifier-keys)
+# Modifier Keys
+[![npm version](https://badge.fury.io/js/modifier-keys.svg)](https://badge.fury.io/js/modifier-keys) [![Build Status](https://travis-ci.org/applitools/modifier-keys.svg?branch=master)](https://travis-ci.org/applitools/modifier-keys)  
 A declarative library designed to handle modifier key states across multiple systems
 
 ## Introduction
