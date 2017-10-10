@@ -53,4 +53,21 @@ describe('modifier closure', () => {
     expect(result.length).toBe(args.length);
     expect([...result]).toEqual(args);
   });
+  it('should keep the handler\'s context', () => {
+    getUserAgentMock.mockReturnValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
+    let event = new KeyboardEvent('keydown', {'key': 'c', 'metaKey': true});
+    let context = {};
+    function EventHandler() {
+      return this;
+    }
+    let handler = EventHandler.bind(context);
+    expect(Modifier(handler)(event)).toBe(context);
+  });
+  it('should throw an error if no event was sent', () => {
+    expect(Modifier(new Function)()).toThrow();
+  });
+  it('should throw an error if wrong type of event was sent', () => {
+    let event = new MouseEvent('click');
+    expect(Modifier(new Function)(event)).toThrow();
+  });
 });
