@@ -1,4 +1,4 @@
-# Modifier Keys &middot; [![npm version](https://img.shields.io/npm/v/modifier-keys.svg)](https://www.npmjs.com/package/modifier-keys) [![Build Status](https://travis-ci.org/applitools/modifier-keys.svg?branch=master)](https://travis-ci.org/applitools/modifier-keys)  
+# Modifier Keys &middot; [![npm version](https://img.shields.io/npm/v/modifier-keys.svg)](https://www.npmjs.com/package/modifier-keys) [![Build Status](https://travis-ci.org/applitools/modifier-keys.svg?branch=master)](https://travis-ci.org/applitools/modifier-keys) [![Coverage Status](https://img.shields.io/codecov/c/github/applitools/modifier-keys.svg)](https://codecov.io/gh/applitools/modifier-keys)  
 A declarative library designed to handle modifier key states across multiple systems
 
 ## Introduction
