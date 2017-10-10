@@ -66,6 +66,9 @@ describe('modifier closure', () => {
   it('should throw an error if no event was sent', () => {
     expect(Modifier(new Function)()).toThrow();
   });
+  it('should throw an error if other type was sent', () => {
+    expect(Modifier(new Function)(1)).toThrow();
+  });
   it('should throw an error if wrong type of event was sent', () => {
     let event = new MouseEvent('click');
     expect(Modifier(new Function)(event)).toThrow();
