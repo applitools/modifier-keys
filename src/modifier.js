@@ -26,6 +26,9 @@ export default function Modifier(handler) {
 }
 
 export function modifier(event) {
+  if (!(event instanceof KeyboardEvent)) {
+    throw new Error(`Expected to receive KeyboardEvent instead received ${event ? event.constructor.name : event}`);
+  }
   const os = getOS(getUserAgent());
   event.primaryKey = ((os === OS.macOS && event.metaKey) || (os !== OS.macOS && event.ctrlKey));
   event.secondaryKey = event.altKey;
