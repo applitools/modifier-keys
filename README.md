@@ -7,6 +7,8 @@ Instead of checking whether Command is pressed on macOS or control on Windows, u
 - Primary Key - set to be Command or Control depending on the operating system
 - Secondary Key - set to be Alt
 
+Can also parse key commands to string according to the environment (e.g. `Ctrl+C`)
+
 ## Installation
 
 Using [Yarn](https://yarnpkg.com/):  
@@ -53,3 +55,15 @@ function handleKeyDown(e) {
   event.secondaryKey; //bool
 }
 ```
+
+### Command Parser Usage
+Takes a `key` (string that will be capitalized) and `options`
+```js
+import { parse } from 'modifier-keys';
+
+parse('c', { primaryKey: true }); // ⌘C or Ctrl+C
+```
+
+#### Options
+- `primaryKey` - bool, to include or not the environment's primary key
+- `secondaryKey` - bool, to include or not the environment's secondary key
