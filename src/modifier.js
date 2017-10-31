@@ -23,6 +23,14 @@ function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
+function isKeyboardEvent(event) {
+  return (event instanceof KeyboardEvent);
+}
+
+function isSimilarToKeyboardEvent(event) {
+  return (event && event.hasOwnProperty('metaKey') && event.hasOwnProperty('ctrlKey') && event.hasOwnProperty('altKey'));
+}
+
 export default function Modifier(handler) {
   return (event, ...argv) => {
     return handler(modifier(event), ...argv);
@@ -30,7 +38,7 @@ export default function Modifier(handler) {
 }
 
 export function modifier(event) {
-  if (!(event instanceof KeyboardEvent)) {
+  if (!(isKeyboardEvent(event) || isSimilarToKeyboardEvent(event))) {
     throw new Error(`Expected to receive KeyboardEvent instead received ${event ? event.constructor.name : event}`);
   }
   const os = getOS(getUserAgent());
