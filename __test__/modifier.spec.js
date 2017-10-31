@@ -88,6 +88,14 @@ describe('modifier closure', () => {
     let event = new MouseEvent('click');
     expect(() => Modifier(new Function)(event)).toThrowError('Expected to receive KeyboardEvent instead received MouseEvent');
   });
+  it('should accept an object similar to KeyboardEvent', () => {
+    const mockEvent = {
+      metaKey: true,
+      ctrlKey: false,
+      altKey: false
+    };
+    expect(() => Modifier(new Function)(mockEvent)).not.toThrow();
+  });
 });
 
 describe('key parser', () => {
