@@ -19,6 +19,10 @@ function getOS(currUseragent) {
   }
 }
 
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 export default function Modifier(handler) {
   return (event, ...argv) => {
     return handler(modifier(event), ...argv);
@@ -33,4 +37,12 @@ export function modifier(event) {
   event.primaryKey = ((os === OS.macOS && event.metaKey) || (os !== OS.macOS && event.ctrlKey));
   event.secondaryKey = event.altKey;
   return event;
+}
+
+export function parse(key, options = {}) {
+  const capitalizedKey = capitalize(key);
+  const os = getOS(getUserAgent());
+  return (os === OS.macOS)
+    ? `${options.secondaryKey ? '⌥' : ''}${options.primaryKey ? '⌘' : ''}${capitalizedKey}`
+    : `${options.primaryKey ? 'Ctrl+' : ''}${options.secondaryKey ? 'Alt+' : ''}${capitalizedKey}`;
 }
