@@ -1,4 +1,4 @@
-import Modifier, { modifier, parser } from './modifier';
+import Modifier, { modifier, parse } from './modifier';
 
-Object.assign(Modifier, { modifier, parser });
+Object.assign(Modifier, { modifier, parse });
 export default Modifier;
