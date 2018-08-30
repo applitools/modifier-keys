@@ -102,22 +102,24 @@ describe('key parser', () => {
   it('should capitalize the key', () => {
     expect(parse('c')).toBe('C');
   });
-  it('should use the correct macOS primary and secondary keys', () => {
+  it('should use the correct macOS primary secondary and shift keys', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
     expect(parse('c', { primaryKey: true })).toBe('⌘C');
     expect(parse('c', { secondaryKey: true })).toBe('⌥C');
+    expect(parse('c', { shiftKey: true })).toBe('⇧C');
   });
   it('should use order the keys in macOS as <secondary><primary><key>', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
-    expect(parse('c', { primaryKey: true, secondaryKey: true })).toBe('⌥⌘C');
+    expect(parse('c', { primaryKey: true, secondaryKey: true, shiftKey: true })).toBe('⌥⇧⌘C');
   });
   it('should use the correct primary and secondary keys for others', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
     expect(parse('c', { primaryKey: true })).toBe('Ctrl+C');
     expect(parse('c', { secondaryKey: true })).toBe('Alt+C');
+    expect(parse('c', { shiftKey: true })).toBe('Shift+C');
   });
   it('should use order the keys in all others as <primary><secondary><key>', () => {
     getUserAgentMock.mockReturnValue("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3235.0 Safari/537.36");
-    expect(parse('c', { primaryKey: true, secondaryKey: true })).toBe('Ctrl+Alt+C');
+    expect(parse('c', { primaryKey: true, secondaryKey: true, shiftKey: true })).toBe('Ctrl+Alt+Shift+C');
   });
 });

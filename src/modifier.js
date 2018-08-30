@@ -47,10 +47,12 @@ export function modifier(event) {
   return event;
 }
 
+// macOS modifier order: control, option, shift, command
+// Windows modifier order: control alt shift
 export function parse(key, options = {}) {
   const capitalizedKey = capitalize(key);
   const os = getOS(getUserAgent());
   return (os === OS.macOS)
-    ? `${options.secondaryKey ? '⌥' : ''}${options.primaryKey ? '⌘' : ''}${capitalizedKey}`
-    : `${options.primaryKey ? 'Ctrl+' : ''}${options.secondaryKey ? 'Alt+' : ''}${capitalizedKey}`;
+    ? `${options.secondaryKey ? '⌥' : ''}${options.shiftKey ? '⇧' : ''}${options.primaryKey ? '⌘' : ''}${capitalizedKey}`
+    : `${options.primaryKey ? 'Ctrl+' : ''}${options.secondaryKey ? 'Alt+' : ''}${options.shiftKey ? 'Shift+' : ''}${capitalizedKey}`;
 }
